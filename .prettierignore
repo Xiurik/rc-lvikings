@@ -1,0 +1,18 @@
+# Build outputs
+dist/
+build/
+coverage/
+
+# Dependencies
+node_modules/
+
+# Lock files
+package-lock.json
+yarn.lock
+
+# Generated / third-party
+public/
+
+# Files not to format
+*.min.js
+*.min.css

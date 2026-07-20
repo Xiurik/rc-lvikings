@@ -1,0 +1,41 @@
+/* 1. Importar el núcleo de Tailwind v4 */
+@import "tailwindcss";
+@import "./osrs-components.css";
+
+/* 2. Configurar el tema (Tailwind v4 genera las clases automáticamente a partir de esto) */
+@theme {
+  /* Colores del Pergamino */
+  --color-osrs-parchment-base: #e6d3a8;
+  --color-osrs-parchment-dark: #c8aa76;
+
+  /* Colores del Metal (Interfaz) */
+  --color-osrs-metal-base: #4a4948;
+  --color-osrs-metal-light: #6a6866;
+  --color-osrs-metal-dark: #2a2928;
+
+  /* Colores de Texto */
+  --color-osrs-text-dark: #3a2a18;
+  --color-osrs-text-light: #f0ecd6;
+
+  /* Colores del Estandarte (Botones) */
+  --color-osrs-crimson-banner: #7a110a;
+  --color-osrs-crimson-light: #c91a10;
+  --color-osrs-crimson-hover: #9a150c;
+
+  /* Acentos */
+  --color-osrs-gold-text: #f4c430;
+
+  /* Tipografías */
+  --font-osrs-title: "Cinzel", serif;
+  --font-osrs-body: "Crimson Text", serif;
+}
+
+/* 3. Crear utilidad personalizada para la sombra de texto estilo OSRS (Nueva sintaxis v4) */
+@utility text-shadow-osrs {
+  text-shadow:
+    1px 1px 0px #000,
+    -1px -1px 0px #000,
+    1px -1px 0px #000,
+    -1px 1px 0px #000,
+    2px 2px 3px rgba(0, 0, 0, 0.7);
+}

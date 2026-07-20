@@ -1,0 +1,17 @@
+.app-shell-bg {
+  overflow: hidden;
+  background-color: #171717;
+}
+
+.app-shell-bg::before {
+  content: "";
+  position: absolute;
+  inset: -24px;
+  background-image: url("/assets/img/gielinor.png");
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(3px);
+  transform: scale(1.04);
+  z-index: -1;
+}
