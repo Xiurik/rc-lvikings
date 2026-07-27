@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- RuneProfile: collection log cerrado con emblema rúnico y marca de completado.
+       Paleta del tema: #f4c430 (oro), #d4af37 (oro profundo), #1a160f (contorno). -->
+  <g stroke="#1a160f" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- Canto de las páginas -->
+    <path d="M17 10 H50 A3 3 0 0 1 53 13 V51 A3 3 0 0 1 50 54 H17 Z" fill="#e6d3a8" />
+    <!-- Tapa -->
+    <path d="M11 10 H45 A3 3 0 0 1 48 13 V51 A3 3 0 0 1 45 54 H11 Z" fill="#d4af37" />
+    <!-- Lomo -->
+    <path d="M11 10 H19 V54 H11 Z" fill="#a8842a" />
+    <!-- Marca de completado -->
+    <path d="M26 44 L30.5 48.5 L39 38.5" fill="none" stroke-width="3" />
+  </g>
+  <!-- Emblema rúnico de la tapa -->
+  <path d="M33 17 L41 26 L33 35 L25 26 Z" fill="#2b251b" />
+  <path d="M33 22 L36.5 26 L33 30 L29.5 26 Z" fill="#f4c430" />
+</svg>

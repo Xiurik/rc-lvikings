@@ -29,6 +29,7 @@
 
     /* Path aliases heredados del proyecto Angular */
     "paths": {
+      "@icons/*": ["./src/assets/icons/*"],
       "@imgs/*": ["./src/assets/img/*"],
       "@environment": ["./src/env/env.ts"],
       "@components/*": ["./src/components/*"],

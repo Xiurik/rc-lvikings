@@ -78,4 +78,6 @@ export interface TrackerLink {
   description: string;
   href: string;
   cta: string;
+  /** URL del SVG importado desde `src/assets/icons/` (Vite lo resuelve y le pone hash). */
+  icon: string;
 }
