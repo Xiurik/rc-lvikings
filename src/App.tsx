@@ -11,6 +11,7 @@ import { Progress } from '@features/progress/Progress';
 import { Ranks } from '@features/ranks/Ranks';
 import { Rules } from '@features/rules/Rules';
 import { Staff } from '@features/staff/Staff';
+import { TopPlayers } from '@features/top-players/TopPlayers';
 import './App.css';
 
 /** Bloques JSON-LD del sitio, indexados por el `id` del `<script>` que los aloja en el `<head>`. */
@@ -36,6 +37,7 @@ export function App() {
         <Hero />
         <About />
         <Staff />
+        <TopPlayers />
         <Ranks />
         <Gallery />
         <Progress />

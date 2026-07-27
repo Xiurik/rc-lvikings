@@ -1,7 +1,7 @@
 /** Contratos de datos del clan. Todo lo que se renderiza en la SPA se tipa aquí. */
 
 /** Ids de las secciones navegables (coinciden con los `id` del DOM y con el hash de la URL). */
-export type SectionId = 'inicio' | 'miembros' | 'rangos' | 'galeria' | 'progreso' | 'comunidad';
+export type SectionId = 'inicio' | 'miembros' | 'top-jugadores' | 'rangos' | 'galeria' | 'progreso' | 'comunidad';
 
 export interface NavItem {
   id: SectionId;
@@ -75,6 +75,15 @@ export interface GalleryItem {
   /** Dimensiones intrínsecas del archivo. Sin ellas el navegador no puede reservar el hueco y el CLS se dispara. */
   width: number;
   height: number;
+}
+
+/** Fila de la tabla de TOP jugadores, ya normalizada desde el CSV del Google Sheet. */
+export interface TopPlayer {
+  rank: number;
+  username: string;
+  clanPoints: number;
+  /** Texto tal como viene en la columna `clan_rank`; puede no coincidir con ningún `ClanRank`. */
+  clanRank: string;
 }
 
 export interface TrackerLink {
