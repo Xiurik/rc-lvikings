@@ -2,35 +2,57 @@
 @import "tailwindcss";
 @import "./osrs-components.css";
 
-/* 2. Configurar el tema (Tailwind v4 genera las clases automáticamente a partir de esto) */
+/* 2. Configurar el tema.
+      Tailwind v4 es "CSS-first": este bloque @theme sustituye por completo a tailwind.config.js
+      y genera automáticamente las utilidades (bg-osrs-*, text-osrs-*, font-osrs-*, border-osrs-*). */
 @theme {
-  /* Colores del Pergamino */
+  /* Pergamino */
   --color-osrs-parchment-base: #e6d3a8;
   --color-osrs-parchment-dark: #c8aa76;
+  --color-osrs-parchment-line: #b59560;
 
-  /* Colores del Metal (Interfaz) */
+  /* Metal (interfaz del juego) */
   --color-osrs-metal-base: #4a4948;
   --color-osrs-metal-light: #6a6866;
   --color-osrs-metal-dark: #2a2928;
 
-  /* Colores de Texto */
+  /* Madera / marcos rústicos */
+  --color-osrs-wood-base: #4a3520;
+  --color-osrs-wood-light: #6b4c2a;
+  --color-osrs-wood-dark: #2b1f12;
+
+  /* Fondos oscuros de la UI del juego */
+  --color-osrs-ink: #2b251b;
+  --color-osrs-ink-deep: #1a160f;
+
+  /* Texto */
   --color-osrs-text-dark: #3a2a18;
   --color-osrs-text-light: #f0ecd6;
 
-  /* Colores del Estandarte (Botones) */
+  /* Estandarte (botones rojos) */
   --color-osrs-crimson-banner: #7a110a;
   --color-osrs-crimson-light: #c91a10;
   --color-osrs-crimson-hover: #9a150c;
 
-  /* Acentos */
+  /* Acentos dorados */
   --color-osrs-gold-text: #f4c430;
+  --color-osrs-gold-bright: #ffdb58;
+  --color-osrs-gold-deep: #d4af37;
 
-  /* Tipografías */
-  --font-osrs-title: "Cinzel", serif;
-  --font-osrs-body: "Crimson Text", serif;
+  /* Tipografías.
+     Body = Lora en lugar de Crimson Text: mantiene la voz serif del juego, pero con x-height
+     mayor y mucho menos contraste de trazo, así los remates no se pierden en texto claro sobre
+     fondo oscuro. `lnum`/`tnum` fuerzan cifras alineadas y de ancho fijo (CP, EHP, EHB). */
+  --font-osrs-title: "Cinzel", "Georgia", serif;
+  --font-osrs-body: "Lora", "Georgia", "Times New Roman", serif;
+  --font-osrs-body--font-feature-settings: "kern", "liga", "lnum", "tnum";
+  --font-osrs-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+
+  /* Altura del navbar sticky: la usan el scroll-margin de las secciones y el scroll spy */
+  --spacing-osrs-navbar: 4.5rem;
 }
 
-/* 3. Crear utilidad personalizada para la sombra de texto estilo OSRS (Nueva sintaxis v4) */
+/* 3. Utilidades personalizadas (nueva sintaxis v4) */
 @utility text-shadow-osrs {
   text-shadow:
     1px 1px 0px #000,
@@ -38,4 +60,43 @@
     1px -1px 0px #000,
     -1px 1px 0px #000,
     2px 2px 3px rgba(0, 0, 0, 0.7);
+}
+
+/* Los iconos de rango de OSRS son de ~20px: escalarlos sin suavizado mantiene el look del juego */
+@utility image-pixelated {
+  image-rendering: pixelated;
+}
+
+/* 4. Base */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Quien pida menos movimiento no recibe el smooth scroll */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    @apply bg-osrs-ink-deep text-osrs-text-light font-osrs-sans;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Evita líneas huérfanas al final de los párrafos (degrada solo, sin fallback necesario) */
+  p,
+  li,
+  figcaption {
+    text-wrap: pretty;
+  }
+
+  /* Foco visible y temático para navegación por teclado */
+  :focus-visible {
+    outline: 2px solid var(--color-osrs-gold-bright);
+    outline-offset: 2px;
+  }
 }

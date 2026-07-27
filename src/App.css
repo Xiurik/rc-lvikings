@@ -1,17 +1,31 @@
+/* Fondo del shell de la SPA.
+   Las dos capas son `position: fixed` (no `absolute` con `overflow: hidden` en el contenedor)
+   porque un ancestro con `overflow: hidden` rompe el `position: sticky` del navbar. */
+
 .app-shell-bg {
-  overflow: hidden;
   background-color: #171717;
 }
 
+/* Paisaje de Gielinor desenfocado */
 .app-shell-bg::before {
   content: "";
-  position: absolute;
-  inset: -24px;
+  position: fixed;
+  inset: 0;
   background-image: url("/assets/img/gielinor.png");
   background-position: center top;
   background-repeat: no-repeat;
   background-size: cover;
   filter: blur(3px);
-  transform: scale(1.04);
+  transform: scale(1.05);
+  z-index: -2;
+}
+
+/* Velo oscuro para garantizar el contraste del texto sobre el fondo */
+.app-shell-bg::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-color: rgb(0 0 0 / 60%);
   z-index: -1;
 }

@@ -32,7 +32,9 @@
       "@imgs/*": ["./src/assets/img/*"],
       "@environment": ["./src/env/env.ts"],
       "@components/*": ["./src/components/*"],
+      "@data/*": ["./src/data/*"],
       "@features/*": ["./src/features/*"],
+      "@hooks/*": ["./src/hooks/*"],
       "@layout/*": ["./src/layout/*"],
       "@styles/*": ["./src/assets/styles/*"]
     }
