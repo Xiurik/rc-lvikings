@@ -39,6 +39,10 @@
   --color-osrs-gold-bright: #ffdb58;
   --color-osrs-gold-deep: #d4af37;
 
+  /* Medallas de posición (TOP jugadores): plata y bronce; el oro reusa osrs-gold-bright */
+  --color-osrs-silver: #d7d9db;
+  --color-osrs-bronze: #cd7f32;
+
   /* Tipografías.
      Body = Lora en lugar de Crimson Text: mantiene la voz serif del juego, pero con x-height
      mayor y mucho menos contraste de trazo, así los remates no se pierden en texto claro sobre

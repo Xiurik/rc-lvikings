@@ -16,8 +16,8 @@ describe('HomeRoute', () => {
     expect(screen.getByRole('contentinfo')).toBeInTheDocument();
     expect(screen.getByRole('status')).toBeInTheDocument();
 
-    // Las ocho secciones ancladas de la página única ya están en el DOM.
-    expect(container.querySelectorAll('main > section')).toHaveLength(8);
+    // Las nueve secciones ancladas de la página única ya están en el DOM.
+    expect(container.querySelectorAll('main > section')).toHaveLength(9);
   });
 
   it('mantiene un único <h1> y los <h2> de cada sección principal', () => {
@@ -31,6 +31,7 @@ describe('HomeRoute', () => {
     expect(h2s).toEqual([
       'Quiénes Somos',
       'Miembros del Staff',
+      'Nuestros TOP Jugadores',
       'Rangos y Puntos de Clan',
       'Galería',
       'Progreso del Clan',
