@@ -1,12 +1,26 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useBodyScrollLock } from '@hooks/useBodyScrollLock';
 
-export function Splash() {
-  const navigate = useNavigate();
+export interface SplashProps {
+  /** Se dispara cuando la secuencia termina y el overlay ya no bloquea la página. */
+  onFinish: () => void;
+}
 
+/**
+ * Pantalla de carga estilo Jagex, como *overlay* sobre la página ya montada.
+ *
+ * Antes era una ruta propia (`/`) que navegaba a `/home` a los 6 s. Eso dejaba la raíz del
+ * dominio sin contenido: los bots sociales no ejecutan JS y Googlebot rara vez espera timers
+ * tan largos. Ahora la página completa se renderiza debajo desde el primer paint y esto solo
+ * la tapa mientras dura la animación.
+ */
+export function Splash({ onFinish }: SplashProps) {
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [loadingText, setLoadingText] = useState('Cargando Página...');
   const [transitionSpeed, setTransitionSpeed] = useState(500);
+  const [isFadingOut, setIsFadingOut] = useState(false);
+
+  useBodyScrollLock(true);
 
   useEffect(() => {
     // Secuencia de carga simulando la conexión a los servidores de Jagex
@@ -35,23 +49,37 @@ export function Splash() {
         setTransitionSpeed(1200);
       }, 4800),
 
-      // Redirección al home page una vez completada la barra
-      setTimeout(() => {
-        navigate('/home');
-      }, 6000), // Unos milisegundos extra para que el usuario lea el "Bienvenido"
+      // Unos milisegundos extra para que el usuario lea el «Bienvenido» antes del fundido
+      setTimeout(() => setIsFadingOut(true), 6000),
+      setTimeout(onFinish, 6600),
     ];
 
     return () => timers.forEach(clearTimeout);
-  }, [navigate]);
+  }, [onFinish]);
 
   return (
-    <div className="relative flex h-screen w-screen flex-col items-center justify-center overflow-hidden bg-black">
+    <div
+      // `role="status"` en lugar de un landmark: es un estado transitorio, no una página.
+      role="status"
+      aria-live="polite"
+      className={`fixed inset-0 z-100 flex flex-col items-center justify-center overflow-hidden bg-black transition-opacity duration-500 ${
+        isFadingOut ? 'pointer-events-none opacity-0' : 'opacity-100'
+      }`}
+    >
       <div className="z-10 flex w-full max-w-2xl flex-col items-center px-6 text-center">
-        <h1 className="font-osrs-title text-osrs-gold-text text-shadow-osrs mb-14 text-6xl font-bold tracking-widest drop-shadow-[0_0_15px_rgba(244,196,48,0.2)] md:text-7xl">
+        {/* No es un <h1>: el único encabezado de nivel 1 de la página es el del Hero. */}
+        <p className="font-osrs-title text-osrs-gold-text text-shadow-osrs mb-14 text-6xl font-bold tracking-widest drop-shadow-[0_0_15px_rgba(244,196,48,0.2)] md:text-7xl">
           LEGENDARY VIKINGS
-        </h1>
+        </p>
 
-        <div className="border-osrs-metal-light relative mb-5 h-12 w-full rounded-sm border-4 bg-[#1a1a1a] p-1 shadow-[0_0_20px_rgba(0,0,0,0.9)]">
+        <div
+          role="progressbar"
+          aria-valuenow={loadingProgress}
+          aria-valuemin={0}
+          aria-valuemax={100}
+          aria-label="Progreso de carga"
+          className="border-osrs-metal-light relative mb-5 h-12 w-full rounded-sm border-4 bg-[#1a1a1a] p-1 shadow-[0_0_20px_rgba(0,0,0,0.9)]"
+        >
           <div
             className="bg-osrs-crimson-banner h-full transition-all ease-out"
             style={{ width: `${loadingProgress}%`, transitionDuration: `${transitionSpeed}ms` }}

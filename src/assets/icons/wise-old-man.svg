@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- WiseOldMan: sabio con sombrero de mago y barba larga.
+       Paleta del tema: #f4c430 (oro), #d4af37 (oro profundo), #1a160f (contorno). -->
+  <g stroke="#1a160f" stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round">
+    <!-- Barba y rostro -->
+    <path d="M20 28 C20 40 21 48 25 53 C28 57 36 57 39 53 C43 48 44 40 44 28 Z" fill="#f4c430" />
+    <!-- Sombrero -->
+    <path d="M32 5 L45.5 24 L18.5 24 Z" fill="#d4af37" />
+    <!-- Ala del sombrero -->
+    <path d="M13.5 23.5 H50.5 A2.75 2.75 0 0 1 50.5 29 H13.5 A2.75 2.75 0 0 1 13.5 23.5 Z" fill="#f4c430" />
+    <!-- Bigote -->
+    <path d="M25.5 41 Q32 46.5 38.5 41" fill="none" />
+  </g>
+  <!-- Rombo del sombrero y ojos: sin contorno para que no se empasten al reducir -->
+  <path d="M32 11.5 L34.6 16 L32 20.5 L29.4 16 Z" fill="#2b251b" />
+  <circle cx="26.6" cy="35" r="2.3" fill="#1a160f" />
+  <circle cx="37.4" cy="35" r="2.3" fill="#1a160f" />
+</svg>

@@ -29,6 +29,8 @@ export interface StaffMember extends RankIconSource {
   rankLabel: string;
   /** Una línea de presentación. */
   blurb: string;
+  /** Foto de perfil en `public/staff/`. Si falta, la tarjeta degrada a las iniciales del RSN. */
+  photo?: string;
 }
 
 export interface StaffGroup {
@@ -70,6 +72,9 @@ export interface GalleryItem {
   thumb: string;
   /** Versión en alta calidad que abre el lightbox. */
   full: string;
+  /** Dimensiones intrínsecas del archivo. Sin ellas el navegador no puede reservar el hueco y el CLS se dispara. */
+  width: number;
+  height: number;
 }
 
 export interface TrackerLink {
@@ -78,4 +83,6 @@ export interface TrackerLink {
   description: string;
   href: string;
   cta: string;
+  /** URL del SVG importado desde `src/assets/icons/` (Vite lo resuelve y le pone hash). */
+  icon: string;
 }

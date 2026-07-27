@@ -45,7 +45,7 @@
     border: 3px solid;
     border-color: #4a4a4a;
     background-color: #666;
-    background-image: url("/assets/img/osrs-stone.png");
+    background-image: url("../img/osrs-stone.png");
     background-repeat: repeat;
     background-size: 128px 128px;
     box-shadow:
@@ -246,7 +246,7 @@
     z-index: 3;
     width: 100%;
     aspect-ratio: 765 / 50;
-    background-image: url("/assets/img/backdrop_top.gif");
+    background-image: url("../img/backdrop_top.gif");
     background-repeat: no-repeat;
     background-size: 100% auto;
   }
@@ -258,7 +258,7 @@
     margin-inline: auto;
     margin-top: calc(-1 * var(--osrs-backdrop-seam-overlap));
     min-height: 320px;
-    background-image: url("/assets/img/backdrop_center.gif");
+    background-image: url("../img/backdrop_center.gif");
     background-repeat: repeat-y;
     background-size: 100% auto;
     background-position: center top;
@@ -275,7 +275,7 @@
     width: 100%;
     margin-top: calc(-1 * var(--osrs-backdrop-seam-overlap));
     aspect-ratio: 765 / 50;
-    background-image: url("/assets/img/backdrop_bottom.gif");
+    background-image: url("../img/backdrop_bottom.gif");
     background-repeat: no-repeat;
     background-size: 100% auto;
     background-position: center top;

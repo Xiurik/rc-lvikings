@@ -7,7 +7,7 @@ export interface ParchmentScrollProps {
 /**
  * Pergamino desplegado (top / center / bottom) usado por los bloques de texto largo.
  *
- * Los tres GIF de `public/assets/img/` se solapan en las costuras, así que el alto crece con el
+ * Los tres GIF de `src/assets/img/` se solapan en las costuras, así que el alto crece con el
  * contenido sin que se note el corte.
  */
 export function ParchmentScroll({ children }: ParchmentScrollProps) {

@@ -1,13 +1,18 @@
 import { useEffect } from 'react';
 
 /**
- * Al montar la SPA, salta a la sección indicada en el hash de la URL (`/home#rangos`).
+ * Salta a la sección indicada en el hash de la URL (`/#rangos`).
  *
  * Mantiene compatibilidad con los enlaces antiguos por ruta (`/about`, `/info`, `/rules`),
  * que ahora redirigen a un hash de la página única.
+ *
+ * @param enabled Debe ser `false` mientras el splash mantiene el scroll del body bloqueado:
+ *   con `overflow: hidden` el `scrollIntoView` no tiene efecto y el salto se perdería.
  */
-export function useHashScroll(): void {
+export function useHashScroll(enabled = true): void {
   useEffect(() => {
+    if (!enabled) return;
+
     const sectionId = window.location.hash.replace('#', '');
     if (!sectionId) return;
 
@@ -17,5 +22,5 @@ export function useHashScroll(): void {
     });
 
     return () => cancelAnimationFrame(frame);
-  }, []);
+  }, [enabled]);
 }

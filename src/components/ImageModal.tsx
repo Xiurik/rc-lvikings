@@ -77,10 +77,16 @@ export function ImageModal({ item, onClose, onPrev, onNext, position }: ImageMod
         <img
           src={item.full}
           alt={item.alt}
+          width={item.width}
+          height={item.height}
+          // El lightbox solo existe tras un clic: la imagen es lo único que importa cargar ya.
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
           className="max-h-[70vh] w-full bg-black/40 object-contain md:max-h-[75vh]"
         />
 
-        <figcaption className="font-osrs-title text-osrs-gold-bright text-shadow-osrs flex items-center justify-between gap-4 px-2 pt-3 pb-1 text-base md:text-lg">
+        <figcaption className="font-osrs-title text-osrs-gold-bright flex items-center justify-between gap-4 px-2 pt-3 pb-1 text-xl font-bold md:text-3xl">
           <span className="truncate">{item.title}</span>
           {position && (
             <span className="font-osrs-sans text-osrs-text-light/70 shrink-0 text-sm">

@@ -2,17 +2,124 @@
 <html lang="es">
   <head>
     <meta charset="utf-8" />
-    <title>Legendary Vikings | Clan de Old School RuneScape</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!--
+      Los bots sociales (Discord, X, Facebook, WhatsApp, Slack) NO ejecutan JavaScript:
+      solo leen este HTML. Por eso el juego completo de metadatos vive aquí de forma estática
+      y `src/components/Seo.tsx` lo sobrescribe en cliente para Google y para la pestaña.
+      Si cambias algo aquí, cámbialo también en `src/data/seo.ts`.
+    -->
+    <title>LVikings | Clan Hispano de OSRS · World 377</title>
     <meta
       name="description"
-      content="LVikings: clan latino de Old School RuneScape. PvM, social y skillers. Clan Chat LVIKINGS, home world 377." />
+      content="Legendary Vikings (LVikings) es un clan hispano de Old School RuneScape: PvM, raids, skilling y eventos semanales. Únete al Clan Chat LVIKINGS en el world 377 y a nuestro Discord." />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <link rel="canonical" href="https://www.lvikings.com/" />
+    <meta name="theme-color" content="#1c1a17" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Legendary Vikings" />
+    <meta property="og:locale" content="es_ES" />
+    <meta property="og:url" content="https://www.lvikings.com/" />
+    <meta property="og:title" content="LVikings | Clan Hispano de OSRS · World 377" />
+    <meta
+      property="og:description"
+      content="Legendary Vikings (LVikings) es un clan hispano de Old School RuneScape: PvM, raids, skilling y eventos semanales. Únete al Clan Chat LVIKINGS en el world 377 y a nuestro Discord." />
+    <meta property="og:image" content="https://www.lvikings.com/og-cover.jpg" />
+    <meta property="og:image:secure_url" content="https://www.lvikings.com/og-cover.jpg" />
+    <meta property="og:image:type" content="image/jpeg" />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="627" />
+    <meta
+      property="og:image:alt"
+      content="Estandarte de Legendary Vikings, clan hispano de Old School RuneScape" />
+
+    <!-- Twitter Cards: X las lee con `name`, no con `property` -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@LVikingsRS" />
+    <meta name="twitter:creator" content="@LVikingsRS" />
+    <meta name="twitter:title" content="LVikings | Clan Hispano de OSRS · World 377" />
+    <meta
+      name="twitter:description"
+      content="Legendary Vikings (LVikings) es un clan hispano de Old School RuneScape: PvM, raids, skilling y eventos semanales. Únete al Clan Chat LVIKINGS en el world 377 y a nuestro Discord." />
+    <meta name="twitter:image" content="https://www.lvikings.com/og-cover.jpg" />
+    <meta
+      name="twitter:image:alt"
+      content="Estandarte de Legendary Vikings, clan hispano de Old School RuneScape" />
+
+    <!--
+      Datos estructurados estáticos: los rastreadores que no renderizan JS también los leen.
+      El `id` es el que reutiliza `useDocumentMeta` para sobrescribir este mismo bloque.
+    -->
+    <script type="application/ld+json" id="ld-site">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Organization",
+            "@id": "https://www.lvikings.com/#organization",
+            "name": "Legendary Vikings",
+            "alternateName": ["LVikings", "Clan Chat LVIKINGS"],
+            "url": "https://www.lvikings.com/",
+            "description": "Legendary Vikings (LVikings) es un clan hispano de Old School RuneScape: PvM, raids, skilling y eventos semanales. Únete al Clan Chat LVIKINGS en el world 377 y a nuestro Discord.",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://www.lvikings.com/apple-touch-icon.png",
+              "width": 180,
+              "height": 180
+            },
+            "image": "https://www.lvikings.com/og-cover.jpg",
+            "knowsLanguage": "es",
+            "knowsAbout": [
+              {
+                "@type": "VideoGame",
+                "name": "Old School RuneScape",
+                "alternateName": "OSRS",
+                "url": "https://oldschool.runescape.com/",
+                "publisher": { "@type": "Organization", "name": "Jagex Ltd." }
+              }
+            ],
+            "sameAs": [
+              "https://discord.gg/BWJDsA5ux2",
+              "https://x.com/LVikingsRS",
+              "https://wiseoldman.net/groups/6999",
+              "https://runeprofile.com/clan/LVikings"
+            ]
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://www.lvikings.com/#website",
+            "url": "https://www.lvikings.com/",
+            "name": "Legendary Vikings",
+            "alternateName": "LVikings",
+            "inLanguage": "es",
+            "publisher": { "@id": "https://www.lvikings.com/#organization" }
+          },
+          {
+            "@type": "WebPage",
+            "@id": "https://www.lvikings.com/#webpage",
+            "url": "https://www.lvikings.com/",
+            "name": "LVikings | Clan Hispano de OSRS · World 377",
+            "inLanguage": "es",
+            "isPartOf": { "@id": "https://www.lvikings.com/#website" },
+            "about": { "@id": "https://www.lvikings.com/#organization" }
+          }
+        ]
+      }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Lora:ital,wght@0,400..600;1,400&family=Inter:wght@400;500;600&display=swap"
       rel="stylesheet" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+
+    <!-- ICO primero como base universal; los navegadores que entienden SVG prefieren el vectorial -->
+    <link rel="icon" href="/favicon.ico" sizes="16x16 32x32 48x48 64x64" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   </head>
 
   <body>

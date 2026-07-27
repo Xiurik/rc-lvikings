@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Favicon LVikings: placa de la interfaz de OSRS (marco dorado biselado + fondo de tinta)
+       con las iniciales LV en oro y sombra negra, imitando el text-shadow del juego.
+       Letras trazadas como polígonos, no como texto: nada de fuentes, nítido a cualquier tamaño. -->
+  <!-- Marco dorado -->
+  <rect x="2" y="2" width="60" height="60" rx="6" fill="#d4af37" stroke="#1a160f" stroke-width="2.5" />
+  <!-- Bisel: luz arriba-izquierda, sombra abajo-derecha -->
+  <path d="M4.5 52 V8 A3.5 3.5 0 0 1 8 4.5 H52 L46 10.5 H10.5 V46 Z" fill="#ffdb58" opacity="0.55" />
+  <path d="M59.5 12 V56 A3.5 3.5 0 0 1 56 59.5 H12 L18 53.5 H53.5 V18 Z" fill="#1a160f" opacity="0.4" />
+  <!-- Fondo de tinta -->
+  <rect x="8" y="8" width="48" height="48" rx="3" fill="#2b251b" stroke="#1a160f" stroke-width="2" />
+  <!-- Sombra de las iniciales -->
+  <g fill="#1a160f" transform="translate(1.5 1.5)">
+    <path d="M14 18 H21 V40 H29 V46 H14 Z" />
+    <path d="M32 18 H38 L41 36 L44 18 H50 L44.5 46 H37.5 Z" />
+  </g>
+  <!-- Iniciales -->
+  <g fill="#ffdb58">
+    <path d="M14 18 H21 V40 H29 V46 H14 Z" />
+    <path d="M32 18 H38 L41 36 L44 18 H50 L44.5 46 H37.5 Z" />
+  </g>
+</svg>
