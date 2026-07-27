@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { App } from '../App';
+import { useBackgroundMusic } from '@hooks/useBackgroundMusic';
 import { Splash } from '@layout/splash/Splash';
 
 /**
@@ -9,6 +10,9 @@ import { Splash } from '@layout/splash/Splash';
  * equivalente para no romper enlaces ya compartidos.
  */
 export function AppRoutes() {
+  // Vive por encima de las rutas para que el tema siga sonando al pasar del splash al home.
+  useBackgroundMusic();
+
   return (
     <Routes>
       <Route index element={<Splash />} />

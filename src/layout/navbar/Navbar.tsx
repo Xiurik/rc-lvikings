@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { CLAN } from '@data/clan';
 import { NAV_ITEMS, SECTION_IDS } from '@data/navigation';
+import { useMusicMuted } from '@hooks/useBackgroundMusic';
 import { useBodyScrollLock } from '@hooks/useBodyScrollLock';
 import { useScrollSpy } from '@hooks/useScrollSpy';
 import { useSmoothScroll } from '@hooks/useSmoothScroll';
+import soundOffIcon from '@icons/sound-off.svg';
+import soundOnIcon from '@icons/sound-on.svg';
 
 /**
  * Barra de menú sticky con aspecto de piedra.
@@ -15,6 +18,7 @@ export function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const activeSection = useScrollSpy(SECTION_IDS);
   const scrollToSection = useSmoothScroll();
+  const { isMuted, toggleMuted } = useMusicMuted();
 
   useBodyScrollLock(isMobileMenuOpen);
 
@@ -54,24 +58,39 @@ export function Navbar() {
             ))}
           </ul>
 
-          {/* Botón hamburguesa */}
-          <button
-            type="button"
-            className="text-osrs-gold-text cursor-pointer p-2 transition-colors hover:text-white md:hidden"
-            onClick={() => setIsMobileMenuOpen((open) => !open)}
-            aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
-            aria-expanded={isMobileMenuOpen}
-            aria-controls="mobile-menu"
-          >
-            <svg className="size-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d={isMobileMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
-              />
-            </svg>
-          </button>
+          {/* Controles del extremo derecho */}
+          <div className="flex items-center gap-1">
+            {/* Interruptor de la música de fondo */}
+            <button
+              type="button"
+              onClick={toggleMuted}
+              aria-pressed={!isMuted}
+              aria-label={isMuted ? 'Activar la música' : 'Silenciar la música'}
+              title={isMuted ? 'Activar la música' : 'Silenciar la música'}
+              className="cursor-pointer p-1 transition-all duration-150 hover:brightness-125 active:translate-x-px active:translate-y-px"
+            >
+              <img src={isMuted ? soundOffIcon : soundOnIcon} alt="" aria-hidden="true" className="size-12" />
+            </button>
+
+            {/* Botón hamburguesa */}
+            <button
+              type="button"
+              className="text-osrs-gold-text cursor-pointer p-2 transition-colors hover:text-white md:hidden"
+              onClick={() => setIsMobileMenuOpen((open) => !open)}
+              aria-label={isMobileMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
+            >
+              <svg className="size-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d={isMobileMenuOpen ? 'M6 18L18 6M6 6l12 12' : 'M4 6h16M4 12h16M4 18h16'}
+                />
+              </svg>
+            </button>
+          </div>
         </div>
       </nav>
 
