@@ -28,7 +28,8 @@ export function Navbar() {
   };
 
   return (
-    <div className="sticky top-0 z-50 w-full">
+    // `<header>` como landmark de banner del sitio; el `<nav>` interior es la navegación.
+    <header className="sticky top-0 z-50 w-full">
       <nav
         aria-label="Navegación principal"
         className="osrs-stone-panel z-40 w-full rounded-none border-t-0 border-r-0 border-b-[3px] border-l-0"
@@ -69,7 +70,15 @@ export function Navbar() {
               title={isMuted ? 'Activar la música' : 'Silenciar la música'}
               className="cursor-pointer p-1 transition-all duration-150 hover:brightness-125 active:translate-x-px active:translate-y-px"
             >
-              <img src={isMuted ? soundOffIcon : soundOnIcon} alt="" aria-hidden="true" className="size-12" />
+              <img
+                src={isMuted ? soundOffIcon : soundOnIcon}
+                alt=""
+                aria-hidden="true"
+                width={48}
+                height={48}
+                decoding="async"
+                className="size-12"
+              />
             </button>
 
             {/* Botón hamburguesa */}
@@ -124,7 +133,7 @@ export function Navbar() {
           </div>
         </>
       )}
-    </div>
+    </header>
   );
 }
 

@@ -37,8 +37,12 @@ export function Gallery() {
                 <img
                   src={item.thumb}
                   alt={item.alt}
+                  width={item.width}
+                  height={item.height}
                   loading="lazy"
                   decoding="async"
+                  // La cuadrícula es de 1 / 2 / 3 columnas dentro de un contenedor de 72rem.
+                  sizes="(min-width: 1024px) 22rem, (min-width: 640px) 45vw, 92vw"
                   className="aspect-4/3 w-full object-cover transition-transform duration-300 group-hover:scale-105"
                 />
                 <span className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-200 group-hover:bg-black/20" />

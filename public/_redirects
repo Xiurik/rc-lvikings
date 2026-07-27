@@ -1,1 +1,13 @@
-/* /index.html 200
+# Netlify. El orden importa: las reglas específicas van antes del fallback de la SPA.
+
+# Consolidación SEO: el contenido vive en la raíz. Las rutas antiguas redirigen con 301
+# del lado del servidor (no con <Navigate>) para que Google traspase la autoridad del enlace.
+# El fragmento (#rangos, …) lo conserva el navegador al seguir el redirect.
+/home     /                    301!
+/home/*   /                    301!
+/about    /#quienes-somos      301!
+/info     /#comunidad          301!
+/rules    /#reglas             301!
+
+# Fallback de la SPA: cualquier otra ruta sirve el index y React Router decide.
+/*        /index.html          200

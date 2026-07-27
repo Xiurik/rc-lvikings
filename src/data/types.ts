@@ -70,6 +70,9 @@ export interface GalleryItem {
   thumb: string;
   /** Versión en alta calidad que abre el lightbox. */
   full: string;
+  /** Dimensiones intrínsecas del archivo. Sin ellas el navegador no puede reservar el hueco y el CLS se dispara. */
+  width: number;
+  height: number;
 }
 
 export interface TrackerLink {

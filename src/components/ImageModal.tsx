@@ -77,6 +77,12 @@ export function ImageModal({ item, onClose, onPrev, onNext, position }: ImageMod
         <img
           src={item.full}
           alt={item.alt}
+          width={item.width}
+          height={item.height}
+          // El lightbox solo existe tras un clic: la imagen es lo único que importa cargar ya.
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
           className="max-h-[70vh] w-full bg-black/40 object-contain md:max-h-[75vh]"
         />
 

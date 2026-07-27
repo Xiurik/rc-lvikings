@@ -1,0 +1,15 @@
+# robots.txt — https://www.lvikings.com
+# Todas las rutas son públicas: no hay panel, API ni área privada que ocultar.
+
+User-agent: *
+Allow: /
+
+# Vite emite el bundle en /assets/ con hash. Si se bloquea, Googlebot no puede
+# renderizar la SPA y la indexa vacía. Explícito para que nadie lo bloquee por error.
+Allow: /assets/
+Allow: /gallery/
+Allow: /icons/
+Allow: /*.js$
+Allow: /*.css$
+
+Sitemap: https://www.lvikings.com/sitemap.xml

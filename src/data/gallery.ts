@@ -5,6 +5,7 @@ import type { GalleryItem } from './types';
  *
  * TODO: reemplazar los SVG de `public/gallery/` por las capturas reales. `thumb` puede apuntar a una
  * versión ligera y `full` a la de alta calidad que abre el lightbox; con una sola imagen, repetir la ruta.
+ * Al sustituirlas, actualizar también `width` / `height` con las dimensiones reales del archivo.
  */
 export const GALLERY_ITEMS: GalleryItem[] = [
   {
@@ -13,6 +14,8 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     alt: 'Grupo del clan completando Chambers of Xeric',
     thumb: '/gallery/event-01.svg',
     full: '/gallery/event-01.svg',
+    width: 1200,
+    height: 800,
   },
   {
     id: 'event-02',
@@ -20,6 +23,8 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     alt: 'Equipo del clan en Theatre of Blood',
     thumb: '/gallery/event-02.svg',
     full: '/gallery/event-02.svg',
+    width: 1200,
+    height: 800,
   },
   {
     id: 'event-03',
@@ -27,6 +32,8 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     alt: 'Podio del evento Boss of the Week',
     thumb: '/gallery/event-03.svg',
     full: '/gallery/event-03.svg',
+    width: 1200,
+    height: 800,
   },
   {
     id: 'event-04',
@@ -34,6 +41,8 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     alt: 'Miembros del clan compitiendo en Skill of the Week',
     thumb: '/gallery/event-04.svg',
     full: '/gallery/event-04.svg',
+    width: 1200,
+    height: 800,
   },
   {
     id: 'event-05',
@@ -41,6 +50,8 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     alt: 'Celebración de un Infernal Cape del clan',
     thumb: '/gallery/event-05.svg',
     full: '/gallery/event-05.svg',
+    width: 1200,
+    height: 800,
   },
   {
     id: 'event-06',
@@ -48,5 +59,7 @@ export const GALLERY_ITEMS: GalleryItem[] = [
     alt: 'Reunión general del clan en el world 377',
     thumb: '/gallery/event-06.svg',
     full: '/gallery/event-06.svg',
+    width: 1200,
+    height: 800,
   },
 ];

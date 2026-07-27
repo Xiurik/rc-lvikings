@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  La SPA tiene una sola URL indexable. Los anclas (#miembros, #rangos, #galeria, #progreso,
+  #comunidad, #quienes-somos, #reglas) son fragmentos: Google los descarta al normalizar la URL,
+  así que listarlos aquí no añade páginas, solo ruido.
+
+  Las rutas heredadas /home, /about, /info y /rules responden 301 a "/" (ver public/_redirects):
+  una URL que redirige nunca debe aparecer en el sitemap.
+
+  Actualiza <lastmod> cuando cambie el contenido de la página.
+-->
+<urlset
+  xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <url>
+    <loc>https://www.lvikings.com/</loc>
+    <lastmod>2026-07-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.lvikings.com/og-cover.jpg</image:loc>
+      <image:title>Legendary Vikings — Clan hispano de Old School RuneScape</image:title>
+    </image:image>
+  </url>
+</urlset>

@@ -1,28 +1,29 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { App } from '../App';
 import { useBackgroundMusic } from '@hooks/useBackgroundMusic';
-import { Splash } from '@layout/splash/Splash';
+import { HomeRoute } from './HomeRoute';
 
 /**
- * Solo dos destinos reales: el splash de carga y la página única.
+ * Un solo destino real: la página única en la raíz del dominio.
  *
- * Las rutas antiguas (`/about`, `/info`, `/rules`) se conservan como redirecciones al hash
- * equivalente para no romper enlaces ya compartidos.
+ * `/home` y las rutas antiguas (`/about`, `/info`, `/rules`) se conservan como redirecciones
+ * para no romper enlaces ya compartidos. En producción las resuelve Netlify con un 301 real
+ * (`public/_redirects`); estas rutas son la red de seguridad para navegación cliente y para
+ * `npm run dev`, donde `_redirects` no interviene.
  */
 export function AppRoutes() {
-  // Vive por encima de las rutas para que el tema siga sonando al pasar del splash al home.
+  // Vive por encima de las rutas para que el tema siga sonando entre navegaciones.
   useBackgroundMusic();
 
   return (
     <Routes>
-      <Route index element={<Splash />} />
-      <Route path="home" element={<App />} />
+      <Route index element={<HomeRoute />} />
 
-      <Route path="about" element={<Navigate to="/home#quienes-somos" replace />} />
-      <Route path="info" element={<Navigate to="/home#comunidad" replace />} />
-      <Route path="rules" element={<Navigate to="/home#reglas" replace />} />
+      <Route path="home" element={<Navigate to="/" replace />} />
+      <Route path="about" element={<Navigate to="/#quienes-somos" replace />} />
+      <Route path="info" element={<Navigate to="/#comunidad" replace />} />
+      <Route path="rules" element={<Navigate to="/#reglas" replace />} />
 
-      {/* Cualquier ruta desconocida vuelve al splash */}
+      {/* Cualquier ruta desconocida vuelve a la página única */}
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

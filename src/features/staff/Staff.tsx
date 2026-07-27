@@ -13,15 +13,21 @@ export function Staff() {
       <div className="flex flex-col gap-12">
         {STAFF_GROUPS.map((group) => {
           const isLeader = group.role === 'leader';
+          const headingId = `staff-${group.role}-title`;
 
           return (
-            <div key={group.role}>
-              <div className="mb-6 flex flex-col items-center text-center">
-                <h3 className="font-osrs-title text-osrs-gold-bright text-shadow-osrs text-2xl font-bold tracking-wide md:text-3xl">
+            // Subsección con nombre propio: cada rango del staff es un bloque semántico
+            // independiente dentro de `#miembros`.
+            <section key={group.role} aria-labelledby={headingId}>
+              <header className="mb-6 flex flex-col items-center text-center">
+                <h3
+                  id={headingId}
+                  className="font-osrs-title text-osrs-gold-bright text-shadow-osrs text-2xl font-bold tracking-wide md:text-3xl"
+                >
                   {group.title}
                 </h3>
                 <p className="font-osrs-body text-osrs-text-light mt-1 text-base md:text-2xl">{group.description}</p>
-              </div>
+              </header>
 
               <ul
                 className={`grid gap-6 ${
@@ -34,7 +40,7 @@ export function Staff() {
                   </li>
                 ))}
               </ul>
-            </div>
+            </section>
           );
         })}
       </div>
