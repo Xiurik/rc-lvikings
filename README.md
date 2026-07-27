@@ -18,19 +18,26 @@ TypeScript, Vite y Tailwind CSS v4, con estética inspirada en la interfaz del j
 
 ## Estructura
 
+`public/` solo contiene lo que necesita una URL fija y predecible; todo lo que el código
+referencia por import o por `url()` vive en `src/assets/` para que Vite lo hashee.
+
 ```
-public/
-├─ assets/img/        Texturas OSRS (piedra, pergamino, paisaje)
-├─ gallery/           Placeholders de la galería (reemplazables por capturas reales)
-└─ icons/             Iconos de rango (ver public/icons/README.md)
+public/                 Copiado literal a dist/, sin procesar ni hashear
+├─ favicon.ico
+├─ _redirects           Config de Netlify: debe existir con ese nombre exacto
+├─ gallery/             Placeholders de la galería (reemplazables sin tocar código)
+└─ icons/               Iconos de rango (ver public/icons/README.md)
 
 src/
 ├─ App.tsx            Layout de la SPA: Navbar + secciones + Footer
 ├─ App.css            Fondo del shell (capas fixed para no romper el sticky)
 ├─ main.tsx           Bootstrap de React + BrowserRouter
-├─ assets/styles/
-│  ├─ global.css      Tema Tailwind v4 (@theme), utilidades y capa base
-│  └─ osrs-components.css   Paneles, botones y marcos con relieve estilo OSRS
+├─ assets/
+│  ├─ icons/          SVG importados desde TS (iconos de los trackers)
+│  ├─ img/            Texturas OSRS: piedra, pergamino, paisaje
+│  └─ styles/
+│     ├─ global.css   Tema Tailwind v4 (@theme), utilidades y capa base
+│     └─ osrs-components.css   Paneles, botones y marcos con relieve estilo OSRS
 ├─ components/        UI reutilizable y agnóstica de dominio
 │  ├─ ImageModal.tsx        Lightbox de la galería
 │  ├─ ParchmentScroll.tsx   Pergamino desplegado para textos largos
