@@ -5,6 +5,8 @@ export interface StaffCardProps {
   member: StaffMember;
   /** El líder se muestra con un retrato más grande. */
   featured?: boolean;
+  /** Se invoca al hacer clic en el retrato, solo si `member.photo` existe. */
+  onPhotoClick?: (member: StaffMember) => void;
 }
 
 /** Iniciales del RSN para el retrato: `LV Ragnar` -> `LR`. */
@@ -18,34 +20,51 @@ function initialsOf(rsn: string): string {
 }
 
 /** Tarjeta de presentación estilo retrato rústico para la administración del clan. */
-export function StaffCard({ member, featured = false }: StaffCardProps) {
+export function StaffCard({ member, featured = false, onPhotoClick }: StaffCardProps) {
   return (
     <article className="osrs-stone-panel h-full transition-transform duration-200 hover:-translate-y-1">
       <div className="flex h-full flex-col items-center gap-4 p-5 text-center">
         {/* Retrato */}
         <div
-          className={`osrs-wood-frame bg-osrs-ink-deep flex items-center justify-center ${
+          className={`osrs-wood-frame bg-osrs-ink-deep flex items-center justify-center overflow-hidden ${
             featured ? 'size-28 md:size-32' : 'size-24'
           }`}
         >
-          <span
-            className={`font-osrs-title text-osrs-gold-bright text-shadow-osrs font-bold ${
-              featured ? 'text-4xl md:text-5xl' : 'text-3xl'
-            }`}
-            aria-hidden="true"
-          >
-            {initialsOf(member.rsn)}
-          </span>
+          {member.photo ? (
+            <button
+              type="button"
+              onClick={() => onPhotoClick?.(member)}
+              aria-label={`Ampliar foto de ${member.rsn}`}
+              className="block h-full w-full cursor-pointer"
+            >
+              <img
+                src={member.photo}
+                alt=""
+                className="h-full w-full object-cover transition-transform duration-200 hover:scale-110"
+                loading="lazy"
+                decoding="async"
+              />
+            </button>
+          ) : (
+            <span
+              className={`font-osrs-title text-osrs-gold-bright text-shadow-osrs font-bold ${
+                featured ? 'text-4xl md:text-5xl' : 'text-3xl'
+              }`}
+              aria-hidden="true"
+            >
+              {initialsOf(member.rsn)}
+            </span>
+          )}
         </div>
 
         <div>
-          <h4 className="font-osrs-title text-osrs-gold-text text-shadow-osrs text-xl font-bold md:text-2xl">
+          <h4 className="font-osrs-title text-osrs-gold-text text-shadow-osrs text-xl font-bold md:text-3xl">
             {member.rsn}
           </h4>
 
           <p className="border-osrs-gold-deep bg-osrs-ink mt-2 inline-flex items-center gap-2 rounded-sm border px-3 py-1">
             <RankIcon {...member} rankName={member.rankLabel} size={20} />
-            <span className="font-osrs-sans text-osrs-gold-bright text-xs font-semibold tracking-widest uppercase">
+            <span className="font-osrs-sans text-osrs-gold-bright text-sm font-semibold tracking-widest uppercase">
               {member.rankLabel}
             </span>
           </p>

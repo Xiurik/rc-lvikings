@@ -48,7 +48,7 @@ export function Gallery() {
                 <span className="pointer-events-none absolute inset-0 bg-black/0 transition-colors duration-200 group-hover:bg-black/20" />
               </span>
 
-              <span className="font-osrs-title text-osrs-gold-bright text-shadow-osrs group-hover:text-osrs-gold-text block px-1 pt-2 pb-0.5 text-center text-base transition-colors md:text-lg">
+              <span className="font-osrs-title text-osrs-gold-bright group-hover:text-osrs-gold-text block px-1 pt-2 pb-0.5 text-center text-base font-bold transition-colors md:text-xl">
                 {item.title}
               </span>
             </button>

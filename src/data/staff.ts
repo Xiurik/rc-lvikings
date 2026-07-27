@@ -4,21 +4,31 @@ import type { StaffGroup } from './types';
 /**
  * Administración del clan.
  *
- * TODO: reemplazar los RSN y los `blurb` por los reales. La estructura ya es la definitiva:
- * añadir o quitar miembros solo requiere editar los arreglos `members`.
+ * La estructura ya es la definitiva: añadir o quitar miembros solo requiere editar
+ * los arreglos `members`. Las fotos de perfil viven en `public/staff/`.
  */
 export const STAFF_GROUPS: StaffGroup[] = [
   {
     role: 'leader',
-    title: 'Líder',
+    title: 'Fundador y Líder',
     description: 'Deputy Owner del clan y responsable final de las decisiones.',
     members: [
       {
-        id: 'leader-1',
-        rsn: 'LV Ragnar',
+        id: 'leader-founder',
+        rsn: 'Reymi',
         role: 'leader',
-        rankLabel: 'Deputy Owner',
-        blurb: 'Fundador del clan. Coordina la dirección general y las alianzas.',
+        rankLabel: 'Fundador',
+        blurb: 'Fundador del clan desde los inicios de RS3.',
+        photo: '/staff/founder.webp',
+        ...rankIcon('Deputy owner'),
+      },
+      {
+        id: 'leader-1',
+        rsn: 'LV IndicaThc',
+        role: 'leader',
+        rankLabel: 'Líder',
+        blurb: 'Director general del clan, liderando el crecimiento y la visión futura.',
+        photo: '/staff/lider.webp',
         ...rankIcon('Deputy owner'),
       },
     ],
@@ -30,26 +40,20 @@ export const STAFF_GROUPS: StaffGroup[] = [
     members: [
       {
         id: 'admin-1',
-        rsn: 'LV Bjorn',
+        rsn: 'Kami Mike | Te Tsu Kami',
         role: 'admin',
         rankLabel: 'Administrator',
         blurb: 'Moderación del Clan Chat y aplicación de las reglas.',
+        photo: '/staff/admin-01.webp',
         ...rankIcon('Administrator'),
       },
       {
         id: 'admin-2',
-        rsn: 'LV Freya',
+        rsn: 'Darma',
         role: 'admin',
         rankLabel: 'Administrator',
         blurb: 'Gestión de Discord, roles y bienvenida a nuevos miembros.',
-        ...rankIcon('Administrator'),
-      },
-      {
-        id: 'admin-3',
-        rsn: 'LV Ivar',
-        role: 'admin',
-        rankLabel: 'Administrator',
-        blurb: 'Control de puntos de clan (CP) y ascensos de rango.',
+        photo: '/staff/admin-02.webp',
         ...rankIcon('Administrator'),
       },
     ],
@@ -61,26 +65,20 @@ export const STAFF_GROUPS: StaffGroup[] = [
     members: [
       {
         id: 'coordinator-1',
-        rsn: 'LV Sigrun',
+        rsn: 'LVRyuAotsuki',
         role: 'coordinator',
         rankLabel: 'Coordinator',
         blurb: 'Eventos de PvM: raids, bosses y aprendizaje grupal.',
+        photo: '/staff/coordinador-01.webp',
         ...rankIcon('Coordinator'),
       },
       {
         id: 'coordinator-2',
-        rsn: 'LV Halfdan',
+        rsn: 'LV Juanca',
         role: 'coordinator',
         rankLabel: 'Coordinator',
         blurb: 'Skill of the Week y competencias de skilling.',
-        ...rankIcon('Coordinator'),
-      },
-      {
-        id: 'coordinator-3',
-        rsn: 'LV Astrid',
-        role: 'coordinator',
-        rankLabel: 'Coordinator',
-        blurb: 'Boss of the Week, sorteos y votaciones del clan.',
+        photo: '/staff/coordinador-02.webp',
         ...rankIcon('Coordinator'),
       },
     ],

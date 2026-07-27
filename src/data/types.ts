@@ -29,6 +29,8 @@ export interface StaffMember extends RankIconSource {
   rankLabel: string;
   /** Una línea de presentación. */
   blurb: string;
+  /** Foto de perfil en `public/staff/`. Si falta, la tarjeta degrada a las iniciales del RSN. */
+  photo?: string;
 }
 
 export interface StaffGroup {
