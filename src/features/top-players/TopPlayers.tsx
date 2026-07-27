@@ -10,7 +10,7 @@ export function TopPlayers() {
 
   return (
     <Section id="top-jugadores" title="Nuestros TOP Jugadores" subtitle="Ranking de nuestros TOP Players.">
-      <div className="osrs-stone-panel">
+      <div className="osrs-stone-panel mx-auto w-4/6">
         <div className="p-4 md:p-6">
           {error ? (
             <div className="flex flex-col items-center gap-4 py-8 text-center">

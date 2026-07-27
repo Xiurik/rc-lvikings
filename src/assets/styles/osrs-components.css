@@ -206,7 +206,6 @@
   /* Fila del tablón: separador tenue y realce al pasar el cursor (sobre piedra oscura) */
   .osrs-rank-row {
     @apply transition-colors duration-150;
-    border-bottom: 1px solid rgb(255 255 255 / 12%);
   }
 
   .osrs-rank-row:last-child {
@@ -214,7 +213,7 @@
   }
 
   .osrs-rank-row:hover {
-    background-color: rgb(255 219 88 / 8%);
+    background-color: rgb(255 219 88 / 20%);
   }
 
   /* Medallón de respaldo cuando ni el icono local ni el de la wiki cargan */
