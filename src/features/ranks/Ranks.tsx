@@ -1,6 +1,5 @@
 import { Section } from '@components/Section';
 import { GENERAL_RANKS, SPECIAL_RANKS } from '@data/ranks';
-import { CpRules } from './CpRules';
 import { RankBoard } from './RankBoard';
 
 /** Sección `#rangos`: sistema de puntos (CP) y requisitos de cada rango. */
@@ -9,10 +8,10 @@ export function Ranks() {
     <Section
       id="rangos"
       title="Rangos y Puntos de Clan"
-      subtitle="Cada rango se gana con Clan Points (CP) y, en los rangos especiales, también con EHP y EHB verificados en WiseOldMan."
+      subtitle="Cada rango se gana con Clan Points (CP) y, en los rangos especiales, también con EHP y EHB verificados en WiseOldMan, estos obtenidos asistiendo a eventos, completando logros y participando en actividades del clan."
     >
       <div className="flex flex-col gap-8">
-        <CpRules />
+        {/* <CpRules /> */}
 
         <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-2">
           <RankBoard title="Rangos Especiales" description="Hitos y reconocimientos del clan." ranks={SPECIAL_RANKS} />

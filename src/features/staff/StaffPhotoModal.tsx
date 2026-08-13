@@ -1,7 +1,7 @@
-import { useEffect, useRef } from 'react';
 import { RankIcon } from '@components/RankIcon';
 import type { StaffMember } from '@data/types';
 import { useBodyScrollLock } from '@hooks/useBodyScrollLock';
+import { useEffect, useRef } from 'react';
 
 export interface StaffPhotoModalProps {
   /** `null` mantiene el lightbox cerrado. */
@@ -68,7 +68,7 @@ export function StaffPhotoModal({ member, onClose }: StaffPhotoModalProps) {
         </svg>
       </button>
 
-      <figure className="osrs-wood-frame flex max-h-full w-full max-w-md flex-col p-2">
+      <figure className="osrs-stone-panel flex max-h-full w-full max-w-md flex-col p-2">
         <img
           src={member.photo}
           alt={member.rsn}
