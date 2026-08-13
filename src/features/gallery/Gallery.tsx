@@ -1,7 +1,7 @@
-import { useState } from 'react';
 import { ImageModal } from '@components/ImageModal';
 import { Section } from '@components/Section';
 import { GALLERY_ITEMS } from '@data/gallery';
+import { useState } from 'react';
 
 /**
  * Sección `#galeria`: cuadrícula responsiva con lightbox.
@@ -31,7 +31,7 @@ export function Gallery() {
               type="button"
               onClick={() => setSelectedIndex(index)}
               aria-label={`Ampliar imagen: ${item.title}`}
-              className="osrs-wood-frame group block w-full cursor-pointer p-1.5 transition-transform duration-200 hover:-translate-y-1"
+              className="osrs-stone-panel group block w-full cursor-pointer p-1.5 transition-transform duration-200 hover:-translate-y-1"
             >
               <span className="relative block overflow-hidden bg-black/40">
                 <img
