@@ -50,18 +50,74 @@ export interface PageSeo {
   indexable?: boolean;
 }
 
+/** 154 caracteres: dentro del corte de ~160 con el que Google y Bing renderizan el snippet. */
 export const SITE_DESCRIPTION =
-  `${CLAN.name} (${CLAN.shortName}) es un clan hispano de Old School RuneScape: PvM, raids, skilling y eventos ` +
-  `semanales. Únete al Clan Chat ${CLAN.clanChat} en el world ${CLAN.homeWorld} y a nuestro Discord.`;
+  `${CLAN.name} (${CLAN.shortName}): clan hispano de Old School RuneScape. PvM, raids, skilling y eventos. ` +
+  `Únete al Clan Chat ${CLAN.clanChat} en el world ${CLAN.homeWorld} y Discord.`;
+
+/**
+ * Variantes de marca por las que se busca al clan, incluidos los errores de escritura habituales.
+ *
+ * Alimentan el `alternateName` del JSON-LD y la meta `keywords`: son el mismo conjunto de
+ * señales, así que se declaran una sola vez para que no se desincronicen.
+ */
+export const BRAND_ALIASES = [
+  CLAN.shortName,
+  'Latin Vikings',
+  'lvkings',
+  `Clan Chat ${CLAN.clanChat}`,
+  `${CLAN.name} OSRS`,
+] as const;
+
+/**
+ * Términos para `<meta name="keywords">`.
+ *
+ * Google la ignora desde 2009, pero Bingbot la sigue usando como señal secundaria de
+ * categorización temática. Se mantiene corta y descriptiva del contenido real de la página:
+ * una lista inflada con términos que no aparecen en el documento cuenta como spam para Bing.
+ */
+export const SITE_KEYWORDS = [
+  'lvikings',
+  'legendary vikings',
+  'latin vikings',
+  'lvkings',
+  'clan lvikings',
+  'lvikings osrs',
+  'clan hispano osrs',
+  'clan latino old school runescape',
+  'clan osrs español',
+  'comunidad latina osrs',
+  'clan osrs latam',
+  'old school runescape',
+  'osrs',
+  'world 377 osrs',
+  'clan chat lvikings',
+  'pvm osrs',
+  'raids osrs',
+  'tombs of amascut',
+  'chambers of xeric',
+  'theatre of blood',
+  'skilling osrs',
+  'bingo osrs',
+  'discord clan osrs hispano',
+  'wise old man legendary vikings',
+  'runeprofile lvikings',
+] as const;
+
+/** La meta `keywords` es una lista separada por comas: se serializa una vez y se reutiliza. */
+export const SITE_KEYWORDS_CONTENT = SITE_KEYWORDS.join(', ');
 
 /**
  * Metadatos de la página única.
  *
  * La SPA tiene una sola URL indexable: los anclas (`#rangos`, `#galeria`, …) son fragmentos,
  * y Google los ignora como URLs independientes.
+ *
+ * El sufijo `(Latin Vikings)` del título deja 59 caracteres —por debajo del corte de 60— y
+ * cubre la variante de marca más buscada sin desplazar la keyword principal.
  */
 export const HOME_SEO: PageSeo = {
-  title: `${CLAN.shortName} | Clan Hispano de OSRS · World ${CLAN.homeWorld}`,
+  title: `${CLAN.shortName} | Clan Hispano de OSRS · World ${CLAN.homeWorld} (Latin Vikings)`,
   description: SITE_DESCRIPTION,
   canonicalPath: '/',
   indexable: true,

@@ -45,7 +45,7 @@ export const STAFF_GROUPS: StaffGroup[] = [
         rankLabel: 'Co-Lider',
         blurb: 'Moderación del Clan Chat y aplicación de las reglas.',
         photo: '/staff/admin-01.webp',
-        ...rankIcon('Co-leader'),
+        ...rankIcon('Deputy owner'),
       },
       {
         id: 'admin-2',
@@ -54,7 +54,7 @@ export const STAFF_GROUPS: StaffGroup[] = [
         rankLabel: 'Co-Lider',
         blurb: 'Gestión de Discord, roles y bienvenida a nuevos miembros.',
         photo: '/staff/admin-02.webp',
-        ...rankIcon('Co-leader'),
+        ...rankIcon('Deputy owner'),
       },
     ],
   },
