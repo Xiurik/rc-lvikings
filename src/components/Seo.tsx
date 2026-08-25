@@ -2,6 +2,7 @@ import {
   OG_IMAGE,
   ROBOTS_INDEX,
   ROBOTS_NOINDEX,
+  SITE_KEYWORDS_CONTENT,
   SITE_LANG,
   SITE_LOCALE,
   TWITTER_HANDLE,
@@ -16,6 +17,8 @@ export interface SeoProps extends PageSeo {
   jsonLd?: Record<string, Record<string, unknown>>;
   /** Sobrescribe la portada social para una página concreta (ruta absoluta del sitio). */
   imagePath?: string;
+  /** Lista para `<meta name="keywords">`. Solo la lee Bing; Google la descarta. */
+  keywords?: string;
 }
 
 /**
@@ -30,6 +33,7 @@ export function Seo({
   canonicalPath,
   indexable = true,
   imagePath = OG_IMAGE.path,
+  keywords = SITE_KEYWORDS_CONTENT,
   jsonLd,
 }: SeoProps) {
   const canonical = absoluteUrl(canonicalPath);
@@ -38,6 +42,8 @@ export function Seo({
   const meta: MetaEntry[] = [
     { key: 'name', value: 'description', content: description },
     { key: 'name', value: 'robots', content: indexable ? ROBOTS_INDEX : ROBOTS_NOINDEX },
+    // Solo para Bingbot: Google ignora esta etiqueta desde 2009.
+    { key: 'name', value: 'keywords', content: keywords },
 
     // Open Graph — Discord, Facebook, WhatsApp, Slack
     { key: 'property', value: 'og:type', content: 'website' },

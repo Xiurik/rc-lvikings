@@ -14,12 +14,13 @@
   xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://www.lvikings.com/</loc>
-    <lastmod>2026-07-26</lastmod>
+    <lastmod>2026-08-25</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
     <image:image>
       <image:loc>https://www.lvikings.com/og-cover.jpg</image:loc>
       <image:title>Legendary Vikings — Clan hispano de Old School RuneScape</image:title>
+      <image:caption>Estandarte de Legendary Vikings (LVikings), clan hispano de OSRS en el world 377.</image:caption>
     </image:image>
   </url>
 </urlset>

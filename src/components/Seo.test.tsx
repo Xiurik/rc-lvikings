@@ -1,6 +1,6 @@
 import { render } from '@testing-library/react';
 import { beforeEach, describe, expect, it } from 'vitest';
-import { HOME_SEO, SITE_URL } from '@data/seo';
+import { HOME_SEO, SITE_KEYWORDS_CONTENT, SITE_URL } from '@data/seo';
 import { buildSiteJsonLd } from '@data/structuredData';
 import { Seo } from './Seo';
 
@@ -59,11 +59,57 @@ describe('Seo', () => {
 
     const script = document.getElementById('ld-site');
     const graph = JSON.parse(script?.textContent ?? '{}')['@graph'] as Array<Record<string, unknown>>;
-    const types = graph.map((node) => node['@type']);
+    const nodeById = (id: string) => graph.find((node) => node['@id'] === id);
 
-    expect(types).toEqual(['Organization', 'WebSite', 'WebPage']);
-    expect(graph[0]?.['sameAs']).toContain('https://x.com/LVikingsRS');
-    expect(graph[1]?.['publisher']).toEqual({ '@id': `${SITE_URL}/#organization` });
+    expect(graph.map((node) => node['@type'])).toEqual([
+      ['Organization', 'SportsOrganization'],
+      'VideoGame',
+      'WebSite',
+      'WebPage',
+      'FAQPage',
+    ]);
+
+    const organization = nodeById(`${SITE_URL}/#organization`);
+    expect(organization?.['sameAs']).toContain('https://x.com/LVikingsRS');
+    // Las variantes de marca son lo que conecta las búsquedas mal escritas con la entidad.
+    expect(organization?.['alternateName']).toContain('Latin Vikings');
+    expect(nodeById(`${SITE_URL}/#website`)?.['publisher']).toEqual({ '@id': `${SITE_URL}/#organization` });
+  });
+
+  it('enlaza la organización con la entidad del juego por @id en vez de duplicarla', () => {
+    render(<Seo {...HOME_SEO} jsonLd={{ 'ld-site': buildSiteJsonLd() }} />);
+
+    const graph = JSON.parse(document.getElementById('ld-site')?.textContent ?? '{}')['@graph'] as Array<
+      Record<string, unknown>
+    >;
+    const gameId = 'https://oldschool.runescape.com/#videogame';
+    const organization = graph.find((node) => node['@id'] === `${SITE_URL}/#organization`);
+
+    expect(organization?.['knowsAbout']).toContainEqual({ '@id': gameId });
+    expect(graph.find((node) => node['@id'] === gameId)?.['name']).toBe('Old School RuneScape');
+  });
+
+  it('estructura las preguntas frecuentes como FAQPage', () => {
+    render(<Seo {...HOME_SEO} jsonLd={{ 'ld-site': buildSiteJsonLd() }} />);
+
+    const graph = JSON.parse(document.getElementById('ld-site')?.textContent ?? '{}')['@graph'] as Array<
+      Record<string, unknown>
+    >;
+    const faq = graph.find((node) => node['@type'] === 'FAQPage');
+    const questions = faq?.['mainEntity'] as Array<Record<string, unknown>>;
+
+    expect(questions.length).toBeGreaterThanOrEqual(3);
+    questions.forEach((question) => {
+      expect(question['@type']).toBe('Question');
+      expect(question['name']).toBeTruthy();
+      expect((question['acceptedAnswer'] as Record<string, unknown>)['text']).toBeTruthy();
+    });
+  });
+
+  it('emite la meta keywords que Bing usa como señal de categorización', () => {
+    render(<Seo {...HOME_SEO} />);
+
+    expect(document.head.querySelector('meta[name="keywords"]')).toHaveAttribute('content', SITE_KEYWORDS_CONTENT);
   });
 
   it('marca noindex cuando la página no debe indexarse', () => {

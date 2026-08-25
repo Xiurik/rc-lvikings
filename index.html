@@ -10,12 +10,18 @@
       y `src/components/Seo.tsx` lo sobrescribe en cliente para Google y para la pestaña.
       Si cambias algo aquí, cámbialo también en `src/data/seo.ts`.
     -->
-    <title>LVikings | Clan Hispano de OSRS · World 377</title>
+    <title>LVikings | Clan Hispano de OSRS · World 377 (Latin Vikings)</title>
     <meta
       name="description"
-      content="Legendary Vikings (LVikings) es un clan hispano de Old School RuneScape: PvM, raids, skilling y eventos semanales. Únete al Clan Chat LVIKINGS en el world 377 y a nuestro Discord." />
+      content="Legendary Vikings (LVikings): clan hispano de Old School RuneScape. PvM, raids, skilling y eventos. Únete al Clan Chat LVIKINGS en el world 377 y Discord." />
+    <!-- Solo la lee Bingbot: Google descarta `keywords` desde 2009. -->
+    <meta
+      name="keywords"
+      content="lvikings, legendary vikings, latin vikings, lvkings, clan lvikings, lvikings osrs, clan hispano osrs, clan latino old school runescape, clan osrs español, comunidad latina osrs, clan osrs latam, old school runescape, osrs, world 377 osrs, clan chat lvikings, pvm osrs, raids osrs, tombs of amascut, chambers of xeric, theatre of blood, skilling osrs, bingo osrs, discord clan osrs hispano, wise old man legendary vikings, runeprofile lvikings" />
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <link rel="canonical" href="https://www.lvikings.com/" />
+    <link rel="alternate" hreflang="es" href="https://www.lvikings.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://www.lvikings.com/" />
     <meta name="theme-color" content="#1c1a17" />
 
     <!-- Open Graph -->
@@ -23,10 +29,10 @@
     <meta property="og:site_name" content="Legendary Vikings" />
     <meta property="og:locale" content="es_ES" />
     <meta property="og:url" content="https://www.lvikings.com/" />
-    <meta property="og:title" content="LVikings | Clan Hispano de OSRS · World 377" />
+    <meta property="og:title" content="LVikings | Clan Hispano de OSRS · World 377 (Latin Vikings)" />
     <meta
       property="og:description"
-      content="Legendary Vikings (LVikings) es un clan hispano de Old School RuneScape: PvM, raids, skilling y eventos semanales. Únete al Clan Chat LVIKINGS en el world 377 y a nuestro Discord." />
+      content="Legendary Vikings (LVikings): clan hispano de Old School RuneScape. PvM, raids, skilling y eventos. Únete al Clan Chat LVIKINGS en el world 377 y Discord." />
     <meta property="og:image" content="https://www.lvikings.com/og-cover.jpg" />
     <meta property="og:image:secure_url" content="https://www.lvikings.com/og-cover.jpg" />
     <meta property="og:image:type" content="image/jpeg" />
@@ -40,10 +46,10 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@LVikingsRS" />
     <meta name="twitter:creator" content="@LVikingsRS" />
-    <meta name="twitter:title" content="LVikings | Clan Hispano de OSRS · World 377" />
+    <meta name="twitter:title" content="LVikings | Clan Hispano de OSRS · World 377 (Latin Vikings)" />
     <meta
       name="twitter:description"
-      content="Legendary Vikings (LVikings) es un clan hispano de Old School RuneScape: PvM, raids, skilling y eventos semanales. Únete al Clan Chat LVIKINGS en el world 377 y a nuestro Discord." />
+      content="Legendary Vikings (LVikings): clan hispano de Old School RuneScape. PvM, raids, skilling y eventos. Únete al Clan Chat LVIKINGS en el world 377 y Discord." />
     <meta name="twitter:image" content="https://www.lvikings.com/og-cover.jpg" />
     <meta
       name="twitter:image:alt"
@@ -58,12 +64,13 @@
         "@context": "https://schema.org",
         "@graph": [
           {
-            "@type": "Organization",
+            "@type": ["Organization", "SportsOrganization"],
             "@id": "https://www.lvikings.com/#organization",
             "name": "Legendary Vikings",
-            "alternateName": ["LVikings", "Clan Chat LVIKINGS"],
+            "alternateName": ["LVikings", "Latin Vikings", "lvkings", "Clan Chat LVIKINGS", "Legendary Vikings OSRS"],
             "url": "https://www.lvikings.com/",
-            "description": "Legendary Vikings (LVikings) es un clan hispano de Old School RuneScape: PvM, raids, skilling y eventos semanales. Únete al Clan Chat LVIKINGS en el world 377 y a nuestro Discord.",
+            "description": "Legendary Vikings (LVikings): clan hispano de Old School RuneScape. PvM, raids, skilling y eventos. Únete al Clan Chat LVIKINGS en el world 377 y Discord.",
+            "sport": "Esports / Gaming",
             "logo": {
               "@type": "ImageObject",
               "url": "https://www.lvikings.com/apple-touch-icon.png",
@@ -72,14 +79,15 @@
             },
             "image": "https://www.lvikings.com/og-cover.jpg",
             "knowsLanguage": "es",
+            "areaServed": ["Latinoamérica", "México", "Colombia", "Chile", "Argentina", "Perú", "España"],
             "knowsAbout": [
-              {
-                "@type": "VideoGame",
-                "name": "Old School RuneScape",
-                "alternateName": "OSRS",
-                "url": "https://oldschool.runescape.com/",
-                "publisher": { "@type": "Organization", "name": "Jagex Ltd." }
-              }
+              { "@id": "https://oldschool.runescape.com/#videogame" },
+              "PvM en Old School RuneScape",
+              "Raids: Tombs of Amascut (ToA), Chambers of Xeric (CoX) y Theatre of Blood (ToB)",
+              "Skilling y progresión de cuentas",
+              "Boss of the Week y Skill of the Week",
+              "Bingo y eventos de clan",
+              "Collection Log, EHP y EHB"
             ],
             "sameAs": [
               "https://discord.gg/BWJDsA5ux2",
@@ -89,11 +97,23 @@
             ]
           },
           {
+            "@type": "VideoGame",
+            "@id": "https://oldschool.runescape.com/#videogame",
+            "name": "Old School RuneScape",
+            "alternateName": ["OSRS", "Old School RS"],
+            "url": "https://oldschool.runescape.com/",
+            "genre": ["MMORPG", "Massively Multiplayer Online Role-Playing Game"],
+            "gamePlatform": ["PC", "Android", "iOS"],
+            "publisher": { "@type": "Organization", "name": "Jagex Ltd.", "url": "https://www.jagex.com/" },
+            "sameAs": "https://en.wikipedia.org/wiki/Old_School_RuneScape"
+          },
+          {
             "@type": "WebSite",
             "@id": "https://www.lvikings.com/#website",
             "url": "https://www.lvikings.com/",
             "name": "Legendary Vikings",
-            "alternateName": "LVikings",
+            "alternateName": ["LVikings", "Latin Vikings", "lvkings", "Clan Chat LVIKINGS", "Legendary Vikings OSRS"],
+            "description": "Legendary Vikings (LVikings): clan hispano de Old School RuneScape. PvM, raids, skilling y eventos. Únete al Clan Chat LVIKINGS en el world 377 y Discord.",
             "inLanguage": "es",
             "publisher": { "@id": "https://www.lvikings.com/#organization" }
           },
@@ -101,10 +121,69 @@
             "@type": "WebPage",
             "@id": "https://www.lvikings.com/#webpage",
             "url": "https://www.lvikings.com/",
-            "name": "LVikings | Clan Hispano de OSRS · World 377",
+            "name": "LVikings | Clan Hispano de OSRS · World 377 (Latin Vikings)",
+            "description": "Legendary Vikings (LVikings): clan hispano de Old School RuneScape. PvM, raids, skilling y eventos. Únete al Clan Chat LVIKINGS en el world 377 y Discord.",
             "inLanguage": "es",
             "isPartOf": { "@id": "https://www.lvikings.com/#website" },
-            "about": { "@id": "https://www.lvikings.com/#organization" }
+            "about": { "@id": "https://www.lvikings.com/#organization" },
+            "mentions": { "@id": "https://oldschool.runescape.com/#videogame" },
+            "hasPart": { "@id": "https://www.lvikings.com/#faq" },
+            "primaryImageOfPage": {
+              "@type": "ImageObject",
+              "url": "https://www.lvikings.com/og-cover.jpg",
+              "width": 1280,
+              "height": 627
+            }
+          },
+          {
+            "@type": "FAQPage",
+            "@id": "https://www.lvikings.com/#faq",
+            "url": "https://www.lvikings.com/",
+            "inLanguage": "es",
+            "isPartOf": { "@id": "https://www.lvikings.com/#webpage" },
+            "about": { "@id": "https://www.lvikings.com/#organization" },
+            "mainEntity": [
+              {
+                "@type": "Question",
+                "name": "¿Cómo me uno al clan LVikings de OSRS?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Entra al Clan Chat LVIKINGS dentro de Old School RuneScape o únete a nuestro servidor de Discord y solicita el ingreso a un Alto Rango. Es gratuito y abierto a jugadores hispanohablantes de cualquier nivel, tanto casuales como competitivos."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿En qué mundo y Clan Chat juega Legendary Vikings?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Nuestro home world es el 377 y el Clan Chat dentro del juego es LVIKINGS. Los eventos se coordinan desde el Discord del clan en horario EST / Latinoamérica."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Qué actividades organiza el clan?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Somos un clan PvM, social y skiller: raids (Tombs of Amascut, Chambers of Xeric y Theatre of Blood), bossing, skilling, bingos, Boss of the Week y Skill of the Week, además de sorteos y eventos semanales y mensuales. La participación siempre es opcional."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Legendary Vikings es un clan hispano o latino?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Sí. Legendary Vikings (también escrito LVikings o Latin Vikings) es una comunidad hispanohablante con miembros de México, Colombia, Chile, Argentina, Perú, España y el resto de Latinoamérica. Nació en RS3 y hoy tiene comunidad activa también en OSRS."
+                }
+              },
+              {
+                "@type": "Question",
+                "name": "¿Dónde puedo consultar el progreso del clan?",
+                "acceptedAnswer": {
+                  "@type": "Answer",
+                  "text": "Seguimos EHP, EHB, récords y competiciones en Wise Old Man (grupo 6999) y los Collection Log de los miembros en RuneProfile."
+                }
+              }
+            ]
           }
         ]
       }

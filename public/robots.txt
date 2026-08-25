@@ -9,7 +9,35 @@ Allow: /
 Allow: /assets/
 Allow: /gallery/
 Allow: /icons/
+Allow: /staff/
 Allow: /*.js$
 Allow: /*.css$
 
+# Googlebot y Bingbot ignoran el grupo `*` en cuanto existe uno con su nombre,
+# así que las reglas se repiten enteras en cada grupo en vez de heredarse.
+User-agent: Googlebot
+Allow: /
+Allow: /assets/
+Allow: /gallery/
+Allow: /icons/
+Allow: /staff/
+Allow: /*.js$
+Allow: /*.css$
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+Allow: /assets/
+Allow: /gallery/
+Allow: /icons/
+Allow: /staff/
+Allow: /*.js$
+Allow: /*.css$
+# Bing respeta `Crawl-delay`; Google no. Un segundo evita picos en un sitio estático pequeño
+# sin frenar el descubrimiento de una SPA de una sola URL.
+Crawl-delay: 1
+
+# Sitemap es una directiva global: aplica a todos los grupos, esté donde esté en el archivo.
 Sitemap: https://www.lvikings.com/sitemap.xml
